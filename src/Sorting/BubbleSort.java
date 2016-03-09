@@ -8,8 +8,11 @@ public class BubbleSort<E extends Comparable<E>> {
 
 	/**
 	 * Bubble sort implementation
-	 * @param c the class type
-	 * @param s the size of the array we wish to create
+	 * 
+	 * @param c
+	 *            the class type
+	 * @param s
+	 *            the size of the array we wish to create
 	 */
 	public BubbleSort(Class<E> c, int s) {
 		// Use Array native method to create array
@@ -20,22 +23,23 @@ public class BubbleSort<E extends Comparable<E>> {
 	}
 
 	public static void main(String[] args) {
-		int numElements = (int) Math.pow(10, 5);
+		int numElements = (int) Math.pow(10, 1);
 		BubbleSort<Integer> bs = new BubbleSort<Integer>(Integer.class, numElements);
 		// populate the array
 		for (int index = 0; index < numElements; index++) {
 			bs.set(index, randInt(0, numElements));
 		}
-		bs.print();// print the array
+		System.out.println(bs.toSting());// print the array
 		double start = System.currentTimeMillis();
 		bs.sort();// sort the array
 		double stop = System.currentTimeMillis();
-		bs.print();// print the sorted array
+		System.out.println(bs.toSting());// print the sorted array
 		System.out.println(stop - start);// print the execution time
 	}
 
 	/**
 	 * Random Int generator for a specified range
+	 * 
 	 * @param min
 	 * @param max
 	 * @return
@@ -73,16 +77,21 @@ public class BubbleSort<E extends Comparable<E>> {
 	/**
 	 * Prints to system.out the array
 	 */
-	public void print() {
+	public String toSting() {
+		// creates empty builder, capacity 16
+		StringBuilder sb = new StringBuilder();
 		for (int index = 0; index < a.length; index++) {
-			System.out.printf("%s, ", a[index].toString());
+			// adds string to sb
+			sb.append(String.format("%s, ", a[index].toString()));
 		}
-		System.out.println();
+		return sb.toString();
 	}
 
 	/**
 	 * Returns the element of the array at the specified index
-	 * @param index the position we wish to return
+	 * 
+	 * @param index
+	 *            the position we wish to return
 	 * @return the element at the index specified
 	 */
 	E get(int index) {
@@ -90,9 +99,14 @@ public class BubbleSort<E extends Comparable<E>> {
 	}
 
 	/**
-	 * Sets the element of the array at the position index to be equal to the element provided
-	 * @param index the index of the position we want to set
-	 * @param element The element we want to set the array at the position of the index 
+	 * Sets the element of the array at the position index to be equal to the
+	 * element provided
+	 * 
+	 * @param index
+	 *            the index of the position we want to set
+	 * @param element
+	 *            The element we want to set the array at the position of the
+	 *            index
 	 * @return the element at the index specified
 	 */
 	E set(int index, E element) {
